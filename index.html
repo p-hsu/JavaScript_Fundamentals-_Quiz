@@ -5,39 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Fundamentals Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@600&family=Overlock&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/CSS/style.css">
 </head>
 <body>
     <header>
-        <h1>JavaScript Quiz: Do you know your fundamentals?</h1>
+        <h1>JavaScript Quiz:</h1>
+        <h2>Do you know your fundamentals?</h2>
     </header>
 
-    <section id="about">
-        <p id="aboutText">
-        This quiz is to help you assess your comprehension of JavaScript fundamentals. Please answer the following multiple choice questions to your best ability within the provided time-limit. Each correct answer is worth 1 point - each wrong answer results in a time penalty of 10 seconds. When the quiz is over, please record your initials next to your score.
-        </p>
+    <div class="container">
+        <div id="flex1">
+            <section id="about">
+                <p>
+                This quiz is to help you assess your comprehension of JavaScript fundamentals.
+                <br>
+                <br>
+                Please answer the following multiple choice questions to your best ability within the provided time-limit. Each correct answer is worth 1 point - each wrong answer results in a time penalty of 10 seconds.
+                <br>
+                <br>
+                When the quiz is over, please record your initials next to your score.
+                </p>
 
-        <p id="starInstructions">
-            You have 1 minute - click the "START" button to begin.
-        </p>
+                <p>
+                    You have 1 minute - click the "START!" button to begin.
+                </p>
 
-         <button type="button" id="startBtn">
-            START!
-         </button>
-    </section>
+                <button type="button" id="startBtn">
+                    START!
+                </button>
+            </section>
+        </div>
 
-     <section id="counter">
-        <h2>Time left: <span id="timer">0</span></h2>
-        <h2>Points: <span id="points">0</span></h2>
-        <h2>Penalties: <span id="penalty">0</span></h2>
-    </section>
-    
-    <section id="main">
+        <div id="flex2">
+            <section id="counter">
+                <h2>Time left: <span id="timer">0</span></h2>
+                <h2>Points: <span id="points">0</span></h2>
+                <h2>Penalties: <span id="penalty">0</span></h2>
+            </section>
 
-    </section>
-
-    <footer>
-        <p>JavaScript Fundamental Quiz created by: Pamela Hsu</p>
-    </footer>
+            <section id="main">
+                Questions placeholder
+            </section>
+        </div>
+    </div>
 </body>
 </html>
