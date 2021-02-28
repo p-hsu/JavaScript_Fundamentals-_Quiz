@@ -5,8 +5,11 @@ var pointsEl = document.querySelector("#points");
 var penaltyEl = document.querySelector("#penalty");
 var submitBtn = document.querySelector("#submitBtn");
 var notHidden = document.querySelector("#defaultHidden");
-var mainQuestion = document.querySelector("#Question");
-var choices = document.querySelector("#choice1");
+var mainQuestion = document.querySelector("legend");
+var choice1 = document.querySelector("#choice1");
+var choice2 = document.querySelector("#choice2");
+var choice3 = document.querySelector("#choice3");
+var choice4 = document.querySelector("#choice4");
 
 var timeLeft;
 var currentPoints = 0;
@@ -14,9 +17,27 @@ var currentPenalty= 0;
 var timerInterval;
 
 //questions array
-var questions = [
-
-]
+var questions = [{
+    question: "Which of the following is not a JavsScript data type?",
+    choices: ["string", "number", "array", "boolean"],
+    correctAnswer: 3,
+},
+{
+    question: "Which characters are used to define an object?",
+    choices: ["()", "{}", "\"\"", "\[\]"],
+    correctAnswer: 2,
+},
+{
+    question: "What is the correct syntax when creating a function?",
+    choices: ["function() myFuncation:", "function:myFunction()", "myFunction()", "function myFunction()"],
+    correctAnswer: 4,
+},
+{
+    question: "What condition is this IF statment checking for? `if(i !=== five )`",
+    choices: ["if 'i' is not equal to 5", "if 'i' is not euqal to 'five'", "if 'i' is not equal to '5'", "all of the above" ],
+    correctAnswer: 4,
+}
+];
 
 // Attach event listener to start button to call startQuiz function on click
 startBtn.addEventListener("click", startQuiz);
