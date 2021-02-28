@@ -142,6 +142,10 @@ section p {
     flex: 4;
 }
 
+#defaultHidden {
+    visibility: hidden;
+}
+
 legend {
     padding: 1em;
     text-align: left;
@@ -175,5 +179,9 @@ form label {
     border-width: 1.5px;
     font-family: 'Overlock', cursive;
     font-size: 20px;
-    transition-duration: 0.3s;
+}
+
+#submitBtn:hover {
+    background-color: var(--lblue);
+    color: var(--brown);
 }
