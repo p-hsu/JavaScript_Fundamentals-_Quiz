@@ -1,9 +1,17 @@
+:root {
+    --main: rgb(202, 221, 247);
+    --brown: rgb(78, 39, 11);
+    --lblue: rgb(92, 176, 228);
+    --dkblue: rgb(8, 66, 100);
+
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: rgb(202, 221, 247);
+    background-color: var(--main);
 }
 
 .container {
@@ -27,15 +35,15 @@ body {
 }
 
 header {
-    background:rgb(92, 176, 228);
-    color: rgb(78, 39, 11);
+    background: var(--lblue);
+    color: var(--brown);
     padding: 1em;
     border-style: solid;
-    border-color: rgb(8, 66, 100);
+    border-color: var(--dkblue);
     border-radius: 0.3em;
     border-width: 1.5px;
     text-align: center;
-    box-shadow: 0 4px 5px rgb(8, 66, 100);
+    box-shadow: 0 4px 5px var(--dkblue);
     width: 100%;
 }
 
@@ -43,7 +51,7 @@ header h1 {
     margin: 0;
     font-family: 'Josefin Slab', serif;
     font-size: 3em;
-    font-weight: bolder;
+    font-weight: 600px;
 }
 
 header h2 {
@@ -65,9 +73,9 @@ header h2 {
 section p {
     padding: 1em;
     margin-bottom: 1.5em;;
-    color: rgb(78, 39, 11);
+    color: var(--brown);
     border-style: solid;
-    border-color: rgb(8, 66, 100);
+    border-color: var(--dkblue);
     border-radius: 0.3em;
     border-width: 1.5px;
     font-family: 'Overlock', cursive;
@@ -80,10 +88,10 @@ section p {
 
 #startBtn {
     padding: 0.5em;
-    background-color:rgb(8, 66, 100);
-    color:rgb(92, 176, 228);
+    background-color: var(--dkblue);
+    color: var(--lblue);
     border-style: solid;
-    border-color: rgb(8, 66, 100);
+    border-color: var(--dkblue);
     border-radius: 0.3em;
     border-width: 1.5px;
     font-family: 'Overlock', cursive;
@@ -93,8 +101,8 @@ section p {
 }
 
 #startBtn:hover {
-    background-color: rgb(92, 176, 228);
-    color: rgb(78, 39, 11);
+    background-color: var(--lblue);
+    color: var(--brown);
 }
 
 #counter {
@@ -112,24 +120,60 @@ section p {
     margin-left: 1em;
     margin-right: 1em;
     border-style: solid;
-    border-color: rgb(8, 66, 100);
+    border-color: var(--dkblue);
     border-radius: 0.3em;
     border-width: 1.5px;
-    color: rgb(78, 39, 11);
+    color: var(--brown);
     font-family: 'Overlock', cursive;
     font-size: 20px;
 }
 
 #main {
     padding: 1em;
-    color: rgb(78, 39, 11);
-    border-style: solid;
-    border-color: rgb(8, 66, 100);
-    border-radius: 0.3em;
-    border-width: 1.5px;
+    margin: 1em;
+    color: var(--brown);
     font-family: 'Overlock', cursive;
     font-size: 25px;
     line-height: 1.5em;
-    text-align: center;
+    border-style: solid;
+    border-color: var(--dkblue);
+    border-radius: 0.3em;
+    border-width: 1.5px;
     flex: 4;
+}
+
+legend {
+    padding: 1em;
+    text-align: left;
+}
+
+#displayQuestion {
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 50%;
+}
+
+form input {
+    flex: 0 2 10%;
+}
+
+form label {
+    flex: 2 1 80%;
+}
+
+#submitBtn {
+    padding: 0.5em;
+    margin: 2em;
+    background-color: var(--dkblue);
+    color: var(--lblue);
+    border-style: solid;
+    border-color: var(--dkblue);
+    border-radius: 0.3em;
+    border-width: 1.5px;
+    font-family: 'Overlock', cursive;
+    font-size: 20px;
+    transition-duration: 0.3s;
 }
