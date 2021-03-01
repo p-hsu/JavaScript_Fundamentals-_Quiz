@@ -3,39 +3,36 @@ var startBtn = document.querySelector("#startBtn");
 var timerEL = document.querySelector("#timer");
 var pointsEl = document.querySelector("#points");
 var penaltyEl = document.querySelector("#penalty");
-var submitBtn = document.querySelector("#submitBtn");
-var notHidden = document.querySelector("#defaultHidden");
-var mainQuestion = document.querySelector("legend");
-var choice1 = document.querySelector("#choice1");
-var choice2 = document.querySelector("#choice2");
-var choice3 = document.querySelector("#choice3");
-var choice4 = document.querySelector("#choice4");
+var main = document.querySelector("#main");
+var headerEl = document.querySelector("#question");
 
-var timeLeft;
+var timerInterval;
+var timeLeft = 0
+var timePenalty = 10;
 var currentPoints = 0;
 var currentPenalty= 0;
-var timerInterval;
+var allQuestionsIndex = 0;
 
 //questions array
-var questions = [{
-    question: "Which of the following is not a JavsScript data type?",
+var allQuestions = [{
+    header: "Which of the following is not a JavsScript data type?",
     choices: ["string", "number", "array", "boolean"],
-    correctAnswer: 3,
+    correctAnswer: "array",
 },
 {
-    question: "Which characters are used to define an object?",
+    header: "Which characters are used to define an object?",
     choices: ["()", "{}", "\"\"", "\[\]"],
-    correctAnswer: 2,
+    correctAnswer: "{}",
 },
 {
-    question: "What is the correct syntax when creating a function?",
+    header: "What is the correct syntax when creating a function?",
     choices: ["function() myFuncation:", "function:myFunction()", "myFunction()", "function myFunction()"],
-    correctAnswer: 4,
+    correctAnswer: "function myFunction()",
 },
 {
-    question: "What condition is this IF statment checking for? `if(i !=== five )`",
+    header: "What condition is this IF statment checking for? `if(i !=== five )`",
     choices: ["if 'i' is not equal to 5", "if 'i' is not euqal to 'five'", "if 'i' is not equal to '5'", "all of the above" ],
-    correctAnswer: 4,
+    correctAnswer: "all of the above",
 }
 ];
 
@@ -55,6 +52,7 @@ function startQuiz() {
 function countDown() {
     // setInterval(function() {if / else},1000);
     timerInterval = setInterval(function() {
+        timeLeft = 60;
         timeLeft--;
         timerEL.textContent = timeLeft;
         if (timeLeft <= 0) {
@@ -65,10 +63,20 @@ function countDown() {
     },1000);
 }
 
-// display #defaultHidden div
+// render questions and choices
 function showQuestions() {
-    notHidden.style.visibility = "visible";
-
+    // clears exisitng data
+    main.innerHTML = "";
+    // creates ul element for choices
+    var listEl = document.createElement("ul");
+    listEl.innerHTML = "";
+    // declare varables for questions and choices using for loop
+    for (var i = 0; i < allQuestions.length; i++) {
+        var currentQuestion = allQuestions[allQuestionsIndex].header;
+        var currentChoices = allQuestions[allQuestionsIndex].choices;
+        // display question into html
+        headerEl.textContent = currentQuestion;
+    }
 }
     // function userAnswer(event){
     //     if (event.target.data.index === questions[currentQuestionIndex].answerIndex) {

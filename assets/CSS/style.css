@@ -79,7 +79,7 @@ section p {
     border-radius: 0.3em;
     border-width: 1.5px;
     font-family: 'Overlock', cursive;
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.2em;
     text-align: center;
     flex: 3;
@@ -125,7 +125,7 @@ section p {
     border-width: 1.5px;
     color: var(--brown);
     font-family: 'Overlock', cursive;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 #main {
@@ -142,46 +142,9 @@ section p {
     flex: 4;
 }
 
-#defaultHidden {
-    visibility: hidden;
-}
-
-legend {
-    padding: 1em;
-    text-align: left;
-}
-
-#radioBtns {
-    padding: 1em;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: flex-start;
-    max-width: 50%;
-}
-
-form input {
-    flex: 0 2 10%;
-}
-
-form label {
-    flex: 2 1 80%;
-}
-
-#submitBtn {
-    padding: 0.5em;
-    margin: 2em;
-    background-color: var(--dkblue);
-    color: var(--lblue);
-    border-style: solid;
-    border-color: var(--dkblue);
-    border-radius: 0.3em;
-    border-width: 1.5px;
+#question {
+    color: var(--brown);
     font-family: 'Overlock', cursive;
     font-size: 20px;
-}
-
-#submitBtn:hover {
-    background-color: var(--lblue);
-    color: var(--brown);
+    text-align: center;
 }
