@@ -15,7 +15,7 @@ var allQuestionsIndex = 0;
 
 //questions array
 var allQuestions = [{
-    header: "Which of the following is not a JavsScript data type?",
+    header: "Which of the following is not a JavaScript data type?",
     choices: ["string", "number", "array", "boolean"],
     correctAnswer: "array",
 },
@@ -66,7 +66,7 @@ function countDown() {
 // render questions and choices
 function showQuestions() {
     // clears exisitng data
-    main.innerHTML = "";
+    headerEl.innerHTML = "";
     // creates ul element for choices
     var listEl = document.createElement("ul");
     listEl.innerHTML = "";
@@ -77,6 +77,17 @@ function showQuestions() {
         // display question into html
         headerEl.textContent = currentQuestion;
     }
+    // create and display choices into new li elements
+    currentChoices.forEach(function (newLi) {
+        // declare variable for new li
+        var liEl = document.createElement("li");
+        // render choices into text content of li elements
+        liEl.textContent = newLi;
+        // append new li elements into created ul element
+        ulCreate.appendChild(liEl);
+        // make li elements clickable as event listeners in order to check for right answer
+        liEl.addEventListener("click", (checkAnswer));
+    })
 }
     // function userAnswer(event){
     //     if (event.target.data.index === questions[currentQuestionIndex].answerIndex) {
