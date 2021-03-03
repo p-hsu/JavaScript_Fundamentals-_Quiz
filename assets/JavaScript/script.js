@@ -16,40 +16,35 @@ var allQuestionsIndex = 0;
 
 //questions array
 var allQuestions = [{
-    header: "Which of the following is not a JavaScript data type?",
+    quest: "Which of the following is not a JavaScript data type?",
     choices: ["string", "number", "array", "boolean"],
     correctAnswer: "array",
 },
 {
-    header: "Which characters are used to define an object?",
+    quest: "Which characters are used to define an object?",
     choices: ["()", "{}", "\"\"", "\[\]"],
     correctAnswer: "{}",
 },
 {
-    header: "What is the correct syntax when creating a function?",
+    quest: "What is the correct syntax when creating a function?",
     choices: ["function() myFuncation:", "function:myFunction()", "myFunction()", "function myFunction()"],
     correctAnswer: "function myFunction()",
 },
 {
-    header: "What condition is this IF statment checking for? `if(i !=== five )`",
-    choices: ["if 'i' is not equal to 5", "if 'i' is not euqal to 'five'", "if 'i' is not equal to '5'", "all of the above" ],
+    quest: "What condition is this IF statment checking for? `if(i !=== five )`",
+    choices: ["if 'i' is not equal to 5", "if 'i' is not equal to 'five'", "if 'i' is not equal to '5'", "all of the above" ],
     correctAnswer: "all of the above",
+},
+{
+    quest: "What does DOM stand for",
+    choices: ["Document Object Manual", "Dominating Object Model", "Document Object Model", "Document Operater Model" ],
+    correctAnswer: "Document Object Model",
 }
 ];
 
 // Attach event listener to start button to call startQuiz function on click
 startBtn.addEventListener("click", startQuiz);
 
-//startQuiz function when button clicked
-function startQuiz() {
-    //functions to call
-    timeLeft = 60;
-    countDown();
-    // function for displaying qustions section
-    showQuestions();
-};
-
-// countDown function for timer and triggers quizOver()
 function countDown() {
     // setInterval(function() {if / else},1000);
     timerInterval = setInterval(function() {
@@ -58,11 +53,19 @@ function countDown() {
         timerEL.textContent = timeLeft;
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            // function for displaying initals input
-            // enterInitials();
+            quizOver();
         }
     },1000);
 }
+
+//startQuiz function when button clicked
+function startQuiz() {
+    //function for timer
+    timeLeft = 60;
+    countDown();
+    // function for displaying qustions section
+    showQuestions();
+};
 
 // render questions and choices
 function showQuestions() {
@@ -72,7 +75,7 @@ function showQuestions() {
     ulEl.innerHTML= "";
     // declare varables for questions and choices using for loop
     for (var i = 0; i < allQuestions.length; i++) {
-        var currentQuestion = allQuestions[allQuestionsIndex].header;
+        var currentQuestion = allQuestions[allQuestionsIndex].quest;
         var currentChoices = allQuestions[allQuestionsIndex].choices;
         // display question into html
         headerEl.textContent = currentQuestion;
@@ -102,7 +105,8 @@ function checkAnswer (event) {
             // incorrect answer will add penalty and deduct time
             currentPenalty++;
             penaltyEl.textContent = currentPenalty;
-            timeLeft = timeLeft - timePenalty;
+            timeLeft = timeLeft - timePenalty
+            timerEL.textContent = timeLeft;
         }
     }
     // checkAnswer will also check allQuestionIndex for moving through quiz
@@ -111,15 +115,65 @@ function checkAnswer (event) {
 
     // condition for no more questions
     if (allQuestionsIndex >= allQuestionsIndex.length) {
-        // function for finishing quix
-        // finishQuiz();
+        quizOver();
     } else {
         // call showQuestions again for next question
         showQuestions(allQuestionsIndex);
     }
 }
 
-// when timer = 0 page changes to record page
+// quizOver function for data storage, user inital input
+function quizOver () {
+    main.innerHTML = "";
+    timerEL.textContent = "";
+    pointsEl.textContent = "";
+    penaltyEl.textContent = "";
+
+    //create userStats page - don't forget to set id for DOM
+    var newHeader = document.createElement("h2");
+    newHeader.setAttribute("id", "newH2");
+    newHeader.textContent = "Quiz Completed!"
+
+    main.appendChild(newHeader);
+
+    var newP1 = document.createElement("p");
+    newP1.setAttribute("id", "newP1");
+    newP1.textContent = "Your Stats:";
+
+    main.appendChild(newP1);
+
+    // display stats and append to newP1
+    if (timeLeft >= 0) {
+        var timeRemaining = timeLeft;
+        var userPoints = currentPoints;
+        var userPenalty = currentPenalty;
+        var newP2 = document.createElement("p");
+        newP2.textContent = "Time Remaining: " + timeRemaining + "Points: " + userPoints + "Penalties: " + userPenalty;
+
+        main.appendChild(newP2)
+    }
+
+    // create form to submit user initials
+    var userInitials = document.createElement("label");
+    userInitials.setAttribute("id", "label");
+    userInitials.textContent = "Record your initials:";
+
+    main.appendChild(userInitials);
+
+    var userInput = document.createElement("input");
+    userInput.setAttribute("id", "initials");
+    userInput.setAttribute("type", "text");
+    userInput.textContent = "";
+
+    main.appendChild(userInput);
+
+    var subBtn = document.createElement("button");
+    subBtn.setAttribute("id", "submitBtn");
+    subBtn.setAttribute("type", "submit");
+    subBtn.textContent = "Record My Stats!"
+
+    main.appendChild(subBtn);
+}
 
 // when inital is entered data is stored
 
