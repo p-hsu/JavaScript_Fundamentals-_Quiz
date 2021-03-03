@@ -5,6 +5,7 @@ var pointsEl = document.querySelector("#points");
 var penaltyEl = document.querySelector("#penalty");
 var main = document.querySelector("#main");
 var headerEl = document.querySelector("#question");
+var ulEl = document.querySelector("#choicesUl");
 
 var timerInterval;
 var timeLeft = 0
@@ -68,8 +69,7 @@ function showQuestions() {
     // clears exisitng data
     headerEl.innerHTML = "";
     // creates ul element for choices
-    var listEl = document.createElement("ul");
-    listEl.innerHTML = "";
+    ulEl.innerHTML= "";
     // declare varables for questions and choices using for loop
     for (var i = 0; i < allQuestions.length; i++) {
         var currentQuestion = allQuestions[allQuestionsIndex].header;
@@ -84,26 +84,40 @@ function showQuestions() {
         // render choices into text content of li elements
         liEl.textContent = newLi;
         // append new li elements into created ul element
-        ulCreate.appendChild(liEl);
+        ulEl.appendChild(liEl);
         // make li elements clickable as event listeners in order to check for right answer
         liEl.addEventListener("click", (checkAnswer));
     })
 }
-    // function userAnswer(event){
-    //     if (event.target.data.index === questions[currentQuestionIndex].answerIndex) {
-    //         // if(more questions are availabe) is the currentquestionIndex < questions.length
-    //         // change textcontent of question section
-    //     }
-    //     else (event.target.data.index === !questions[currentQuestionsIndex].answerIndex) {
-            // if(more questions are availabe) is the currentquestionIndex < questions.length
-                // else when no more questions are avaiable or time is out
-                // store points to local storage
-                // display initial form and submition button
-                    // when submission buttom clicked show highscore page with try it again button
-            // decrement time
-    //     };
-    // }
-// incorrect answer increases penalties and decreases time by 10sec
+
+// checkAnswer function using event.target to match answers
+function checkAnswer (event) {
+    var userChoice = event.target;
+    if (userChoice.matches("li")) {
+        // correct answer will add points
+        if (userChoice.textContent == allQuestions[allQuestionsIndex].correctAnswer) {
+            currentPoints++;
+            pointsEl.textContent = currentPoints;
+        } else {
+            // incorrect answer will add penalty and deduct time
+            currentPenalty++;
+            penaltyEl.textContent = currentPenalty;
+            timeLeft = timeLeft - timePenalty;
+        }
+    }
+    // checkAnswer will also check allQuestionIndex for moving through quiz
+    // moving to next question in array
+    allQuestionsIndex++;
+
+    // condition for no more questions
+    if (allQuestionsIndex >= allQuestionsIndex.length) {
+        // function for finishing quix
+        // finishQuiz();
+    } else {
+        // call showQuestions again for next question
+        showQuestions(allQuestionsIndex);
+    }
+}
 
 // when timer = 0 page changes to record page
 
