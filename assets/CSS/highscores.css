@@ -1,0 +1,94 @@
+:root {
+    --main: rgb(202, 221, 247);
+    --brown: rgb(78, 39, 11);
+    --lblue: rgb(92, 176, 228);
+    --dkblue: rgb(8, 66, 100);
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main);
+}
+
+header {
+    background: var(--lblue);
+    color: var(--brown);
+    padding: 1em;
+    border-style: solid;
+    border-color: var(--dkblue);
+    border-radius: 0.3em;
+    border-width: 1.5px;
+    text-align: center;
+    box-shadow: 0 4px 5px var(--dkblue);
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Josefin Slab', serif;
+    font-size: 3em;
+    font-weight: 600px;
+}
+
+header h2 {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    font-family: 'Josefin Slab', serif;
+    font-size: 2em;
+}
+
+div {
+    padding: 1em;
+    margin: 1em;
+    color: var(--brown);
+    font-family: 'Overlock', cursive;
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.5em;
+    border-style: solid;
+    border-color: var(--dkblue);
+    border-radius: 0.3em;
+    border-width: 1.5px;
+}
+
+#statsList {
+    list-style-type: none;
+}
+
+#tryBtn {
+    padding: 0.5em;
+    background-color: var(--dkblue);
+    color: var(--lblue);
+    border-style: solid;
+    border-color: var(--dkblue);
+    border-radius: 0.3em;
+    border-width: 1.5px;
+    font-family: 'Overlock', cursive;
+    font-size: 20px;
+    transition-duration: 0.3s;
+    flex: 1;
+}
+
+#tryBtn:hover {
+    background-color: var(--lblue);
+    color: var(--brown);
+}
+
+li {
+    padding: 1em;
+    margin-bottom: 1.5em;;
+    color: var(--brown);
+    border-style: solid;
+    border-color: var(--dkblue);
+    border-radius: 0.3em;
+    border-width: 1.5px;
+    font-family: 'Overlock', cursive;
+    font-size: 18px;
+    line-height: 1.2em;
+    text-align: center;
+
+}

@@ -191,5 +191,8 @@ function quizOver() {
         allStats = JSON.parse(allStats);
         //push userStats to allStats
         allStats.push(userStats);
+
+        // go to highscores page
+        window.location.replace("./highscores.html");
     });
 }
