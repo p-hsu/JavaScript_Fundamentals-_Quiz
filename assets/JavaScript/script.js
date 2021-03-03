@@ -193,6 +193,6 @@ function quizOver() {
         allStats.push(userStats);
 
         // go to highscores page
-        window.location.replace("./highscores.html");
+        window.location.replace("../highscores.html");
     });
 }

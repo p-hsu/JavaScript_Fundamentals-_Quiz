@@ -6,7 +6,7 @@ var tryBtn = document.getElementById("tryBtn");
 var allStats = local.Storage.getItem("allStats");
 allStats = JSON.parse(allStats);
 
-if (allStats !=== null) {
+if (allStats !== null) {
     for (var i = 0; i < allStats.lengthl; i++) {
         
         //create li element for data display
@@ -18,5 +18,5 @@ if (allStats !=== null) {
 
 // event listener for try again
 tryBtn.addEventListener("click", function() {
-    window.location.replace("./index.html");
+    window.location.replace("../index.html");
 });
