@@ -148,7 +148,7 @@ function quizOver () {
         var userPoints = currentPoints;
         var userPenalty = currentPenalty;
         var newP2 = document.createElement("p");
-        newP2.textContent = "Time Remaining: " + timeRemaining + "Points: " + userPoints + "Penalties: " + userPenalty;
+        newP2.textContent = "Time: " + timeRemaining + "Points: " + userPoints + "Penalties: " + userPenalty;
 
         main.appendChild(newP2)
     }
@@ -173,6 +173,24 @@ function quizOver () {
     subBtn.textContent = "Record My Stats!"
 
     main.appendChild(subBtn);
+
+    // event listener for submit button
+    subBtn.addEventListener("click", function(){
+        var userInitials = userInput.value;
+        var userStats = {
+            Initials: userInitials,
+            Time: timeRemaining,
+            Points: userPoints,
+            Penalties: userPenalty
+        };
+        console.log(userStats);
+
+        // store data
+        var newStats = localStorage.setItem("allStats", newStats);
+        
+        // go to highscores page
+        window.location.replace("")
+    });
 }
 
 // when inital is entered data is stored
