@@ -122,14 +122,14 @@ function checkAnswer (event) {
     }
 }
 
-// quizOver function for data storage, user inital input
-function quizOver () {
+// quizOver function for user stats and data storage
+function quizOver() {
     main.innerHTML = "";
     timerEL.textContent = "";
     pointsEl.textContent = "";
     penaltyEl.textContent = "";
 
-    //create userStats page - don't forget to set id for DOM
+    //create userStats page
     var newHeader = document.createElement("h2");
     newHeader.setAttribute("id", "newH2");
     newHeader.textContent = "Quiz Completed!"
@@ -153,7 +153,7 @@ function quizOver () {
         main.appendChild(newP2)
     }
 
-    // create form to submit user initials
+    // create input to submit user initials
     var userInitials = document.createElement("label");
     userInitials.setAttribute("id", "label");
     userInitials.textContent = "Record your initials:";
@@ -182,24 +182,14 @@ function quizOver () {
             Time: timeRemaining,
             Points: userPoints,
             Penalties: userPenalty
-        };
-        console.log(userStats);
-
-        // store data
-        var newStats = localStorage.setItem("allStats", newStats);
-        
-        // go to highscores page
-        window.location.replace("")
+        }
+        // store data and convert userStats obj to string
+        localStorage.setItem("allStats", JSON.stringify(userStats));
+        // define allStats to hold all stored data
+        var allStats = local.Storage.getItem("allStats");
+        // get stored data and convert to objects
+        allStats = JSON.parse(allStats);
+        //push userStats to allStats
+        allStats.push(userStats);
     });
 }
-
-// when inital is entered data is stored
-
-// each time record page pops up, old data is returned
-
-//optional Try Agin button
-
-// FOR HIGHSCORES page:
-// function to get scores from local storage
-// to add new scores to local storage
-// to clear local storage
