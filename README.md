@@ -47,7 +47,7 @@ This project still has the following bugs to work out:
 
 Please use the following link to deploy live URL of this project:
 
-[JavaScript Fundamentals Quiz](https://p-hsu.github.io/P.Hsu_Portfolio/)
+[JavaScript Fundamentals Quiz](https://p-hsu.github.io/JavaScript_Fundamentals_Quiz/)
 
 ## Credit
 
