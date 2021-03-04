@@ -153,7 +153,7 @@ function quizOver() {
         var userPoints = currentPoints;
         var userPenalty = currentPenalty;
         var newP2 = document.createElement("p");
-        newP2.textContent = "Time: " + timeRemaining + "" +  "Points: " + userPoints + "" +  "Penalties: " + userPenalty;
+        newP2.textContent = "Time: " + timeRemaining + "Points: " + userPoints + "Penalties: " + userPenalty;
 
         main.appendChild(newP2)
     }
@@ -188,14 +188,19 @@ function quizOver() {
             Points: userPoints,
             Penalties: userPenalty
         }
-        // store data and convert userStats obj to string
-        localStorage.setItem("allStats", JSON.stringify(userStats));
-        // define allStats to hold all stored data
-        var allStats = localStorage.getItem("allStats");
-        // get stored data and convert to objects
-        allStats = JSON.parse(allStats);
-        //push userStats to allStats
-        allStats.push(userStats);
+        // worked with instructor for this section
+        // get stored stats
+        var oldStats = localStorage.getItem("allStats");
+        var mergedStats = [];
+        // set array to empty
+        if(!!oldStats){
+            // convert from string to js object
+            mergedStats = JSON.parse(oldStats)
+        }
+        // push userStats into mergedStats as one object
+        mergedStats.push(userStats);
+        // convert to string and store new data of mergedStats into allStats
+        localStorage.setItem("allStats", JSON.stringify(mergedStats));
 
         // go to highscores page
         window.location.replace("highscores.html");
