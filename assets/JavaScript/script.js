@@ -8,7 +8,7 @@ var headerEl = document.querySelector("#question");
 var ulEl = document.querySelector("#choicesUl");
 
 var timerInterval;
-var timeLeft = 0
+var timeLeft = 0;
 var timePenalty = 10;
 var currentPoints = 0;
 var currentPenalty= 0;
@@ -45,25 +45,30 @@ var allQuestions = [{
 // Attach event listener to start button to call startQuiz function on click
 startBtn.addEventListener("click", startQuiz);
 
+// worked with instructor for comprehension of this function
+function checkQuestionIndex() {
+    // if time is out and no more questions, then stop timer and call quizOver
+    if (timeLeft <= 0 || allQuestionsIndex === allQuestions.length - 1){
+        clearInterval(timerInterval);
+        quizOver();
+    }
+}
+
 function countDown() {
     // setInterval(function() {if / else},1000);
     timerInterval = setInterval(function() {
-        timeLeft = 60;
         timeLeft--;
-        timerEL.textContent = timeLeft;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            quizOver();
-        }
+        timerEL.textContent = timeLeft.toString();
+        checkQuestionIndex()
     },1000);
 }
 
 //startQuiz function when button clicked
 function startQuiz() {
-    //function for timer
     timeLeft = 60;
+    //function for timer
     countDown();
-    // function for displaying qustions section
+    // function for displaying questions section
     showQuestions();
 };
 
@@ -148,7 +153,7 @@ function quizOver() {
         var userPoints = currentPoints;
         var userPenalty = currentPenalty;
         var newP2 = document.createElement("p");
-        newP2.textContent = "Time: " + timeRemaining + "Points: " + userPoints + "Penalties: " + userPenalty;
+        newP2.textContent = "Time: " + timeRemaining + "" +  "Points: " + userPoints + "" +  "Penalties: " + userPenalty;
 
         main.appendChild(newP2)
     }
@@ -186,13 +191,13 @@ function quizOver() {
         // store data and convert userStats obj to string
         localStorage.setItem("allStats", JSON.stringify(userStats));
         // define allStats to hold all stored data
-        var allStats = local.Storage.getItem("allStats");
+        var allStats = localStorage.getItem("allStats");
         // get stored data and convert to objects
         allStats = JSON.parse(allStats);
         //push userStats to allStats
         allStats.push(userStats);
 
         // go to highscores page
-        window.location.replace("../highscores.html");
+        window.location.replace("highscores.html");
     });
 }
